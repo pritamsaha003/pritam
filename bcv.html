@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join as Member</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+	<link href="css/bcv.css" rel="stylesheet">
+    <style>
+        .footer-bottom a {
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="pic/1.png" alt="Logo">
+                <span>Ononto</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="query.html">Query</a>
+                <a href="gpay.html">Donate Us</a>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Join Our Volunteer Community</h1>
+            <p>Make a difference in your community by joining our team of dedicated volunteers. Every helping hand counts!</p>
+        </div>
+    </section>
+
+    <section id="volunteer" class="volunteer section">
+    <div class="container">
+        <h2 class="section-title"><center><br>Join Our Volunteer Community!<br></center></h2>
+        <div class="form-container">
+            <form id="volunteerForm" class="volunteer-form" method="POST">
+                
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="e4b784d8-04d9-461b-8a69-ed6697d1b34f">
+                
+                <!-- Recipient Email -->
+                <input type="hidden" name="reply_to" value="ononto.welfare@gmail.com">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter Your Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email (Ex: abc@gmail.com)" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    
+                    <input  type="tel" pattern="[0-9]{10}"  id="phone" name="phone" placeholder="Enter 10-digit phone number ( Ex : 6290652802 )" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="availability">Availability</label>
+                    <select id="availability" name="availability" required>
+                        <option value="">Select Your Availability</option>
+                        <option value="weekdays">Work Days</option>
+                        <option value="weekends">Weekends</option>
+                        <option value="both">Both</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="interests">Optimal location</label>
+                    <input type="text" id="name" name="name" placeholder="Ex : Howrah, WestBengal, India" required>
+                 <!--   <select id="interests" name="interests" required>
+                        <option value="">Select Your Area of Interest</option>
+                        <option value="education">Education</option>
+                        <option value="environment">Environment</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="community">Community Service</option>
+                    </select> -->
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Why do you want to Join us?</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your motivation to member" required></textarea>
+                </div>
+
+                <div class="submit-btn-container">
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section brand-section">
+                <div class="brand-logo">Ononto</div>
+                <p>Empowering communities through sustainable development and innovative solutions. Together, we create lasting impact for a better tomorrow.</p>
+            </div>
+            
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="query.html">Query</a></li>
+                    <li><a href="gallery.html">Our Work</a></li>
+                    <li><a href="gpay.html">Donate Us</a></li>
+                    <li><a href="member.html">Meet Our Members</a></li>
+                      <li><a href="bcv.html"><b>Become a Member</b></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact-info">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i>ononto.welfare@gmail.com</p>
+                <p><i class="fas fa-phone"></i>+91 6290652802 / 96744 57321</p>
+
+                <p><i class="fas fa-map-marker-alt"></i> Salkia, Howrah, WestBengal, India</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Join our community and stay updated with our latest initiatives.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61567180577084&mibextid=ZbWKwL" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                   <a href="https://wa.me/919477611641" target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
+
+                    <a href="https://www.instagram.com/ononto.welfare?igsh=YmJ4bTNkOHM4b21u" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ononto?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ononto. All Rights Reserved. | Designed with ♥ by <a href="https://infinova.netlify.app"><span class="designer-credit">Infinova</span></a></p>
+        </div>
+    </div>
+</footer>
+   <script src="js/bcv.js"></script>
+
+
+
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="dDjZMxiWZldkdqePBr43W";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+
+</body>
+</html>

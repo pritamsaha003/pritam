@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>410 Not Found - Ononto</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #f39c12;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
+            --light-text-color: #ffffff;
+            --neutral-color: #e8f6f3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            overflow: hidden;
+        }
+
+        .background {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .content {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 900;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--light-text-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            top: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .square {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-color);
+            bottom: 20%;
+            right: 10%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 86.6px solid var(--secondary-color);
+            top: 60%;
+            left: 50%;
+            animation: float 9s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 6rem; }
+            h2 { font-size: 2rem; }
+            p { font-size: 1rem; }
+            .content { padding: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 4rem; }
+            h2 { font-size: 1.5rem; }
+            .content { padding: 1.5rem; }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        :root {
+            --primary-color: #235789;
+            --secondary-color: #7FA7B3;
+            --accent-color: #F7B32B;
+            --text-color: #1D2B36;
+            --light-bg: #f9f9f9;
+            --card-bg: #ffffff;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shapes">
+            <div class="shape circle"></div>
+            <div class="shape square"></div>
+            <div class="shape triangle"></div>
+        </div>
+        <div class="content">
+            <h1>410</h1>
+            <h2>Page Not Found</h2>
+            <p>Oops! It seems the page you're looking for has gone on a mission of its own. But don't worry, just like our NGO's commitment to making a difference, we're dedicated to helping you find your way back.</p>
+            <a href="index.html" class="btn">Return to Homepage</a>
+        </div>
+    </div>
+	<div id="donationPopup" class="popup-container"></div>
+</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const donations = [
+                { name: "Ashish A Patkar", amount: "₹350", cause: "stray dogs" },
+                { name: "Sneha R Shah", amount: "₹500", cause: "child education" },
+                { name: "Rahul Verma", amount: "₹1000", cause: "medical aid" },
+                { name: "Pooja Sinha", amount: "₹250", cause: "animal welfare" }
+            ];
+
+            let popup = document.getElementById("donationPopup");
+            let index = 0;
+
+            function showDonation() {
+                let donation = donations[index];
+                popup.textContent = `${donation.name} donated ${donation.amount} for ${donation.cause}`;
+                popup.style.display = "block";
+
+                setTimeout(() => {
+                    popup.style.display = "none";
+                    index = (index + 1) % donations.length;
+                    setTimeout(showDonation, 2000);
+                }, 5000);
+            }
+
+            setTimeout(showDonation, 2000);
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,812 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ononto - Empowering Communities</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+  <!-- Google Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+    <style>
+   @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+</style>
+    <link href = "css/main.css" rel = "stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<style>
+	.popup-container {
+    display: none;
+    position: fixed;
+    top: calc(70px + 10px); /* Adjust according to header height */
+    right: 20px; /* Keep some margin from the edge */
+    transform: none;
+
+    background: #e6a822;
+    color: #000000;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    max-width: 350px;
+    text-align: center;
+    animation: fadeInOut 7s ease-in-out;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+}
+
+   .close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000000;
+    margin-left: 8px; /* Adds spacing between text and X */
+}
+
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(20px); }
+            10% { opacity: 1; transform: translateX(0); }
+            90% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(20px); }
+        }
+
+        @media (max-width: 768px) {
+            .popup-container {
+                font-size: 14px;
+                padding: 10px 15px;
+                max-width: 300px;
+                right: 10px;
+            }
+        }
+
+
+
+
+
+
+/* Cookie Popup - Fixed at Footer */
+#cookiePopup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #1C3D5A; /* Deep Navy Blue */
+    padding: 18px 20px;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    color: #FFFFFF;
+    z-index: 1000;
+}
+
+/* Popup Text */
+#cookiePopup p {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 0;
+    flex: 1;
+    padding-right: 15px;
+}
+
+/* Button Container */
+.cookie-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+/* Accept Button */
+.accept {
+    background: #F5A623; /* Golden Amber */
+    color: #1C3D5A; /* Deep Navy */
+    border: 2px solid #F5A623;
+}
+.accept:hover {
+    background: #E0941E;
+    border-color: #E0941E;
+}
+
+/* Reject Button */
+.reject {
+    background: transparent;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+.reject:hover {
+    background: #5A8D98; /* Muted Teal */
+    border-color: #5A8D98;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    #cookiePopup {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px 12px;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    }
+    #cookiePopup p {
+        font-size: 15px;
+        padding: 0 8px;
+        font-weight: 500;
+    }
+    .cookie-buttons {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+        margin-top: 10px;
+    }
+    .btn {
+        flex: 1;
+        padding: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 8px;
+    }
+}
+
+        .map-section {
+            padding: 2rem;
+            background: linear-gradient(135deg, #ffefba, #ffffff);;
+            border-radius: 0px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 0px solid var(--accent-color);
+        }
+
+        .mapouter {
+            position: relative;
+            text-align: right;
+            width: 100%;
+            height: 400px;
+        }
+
+        .gmap_canvas {
+            overflow: hidden;
+            background: none!important;
+            width: 100%;
+            height: 500px;
+        }
+
+        .gmap_iframe {
+            height: 400px!important;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .map-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .reviews {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #f7f7f7;
+}
+
+.review-stars i {
+    color: #FFD700;
+    font-size: 2rem;
+    margin: 0 0.2rem;
+}
+
+.review-content p {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+a{
+    text-decoration: underline;
+  
+    color: #33ceff ;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="pic/1.png" alt="Ononto Logo">
+                <h1>Ononto</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href = "query.html">Query</a>
+                <a href="gpay.html">Donate Us</a>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+<div id="donationPopup" class="popup-container">
+    <span id="donationText">Your donation message</span>
+    <button class="close-btn"><i class="fas fa-times"></i></button>
+</div>
+
+
+
+    <!--<div id="cookiePopup">
+        <p>Our website uses <a href="tc.html">cookies</a> to enhance your browsing experience. By continuing, you agree to our <a href="tc.html">Terms & Conditions</a>.</p>
+
+        <form id="cookieForm">
+            <input type="hidden" name="access_key" value="e4b784d8-04d9-461b-8a69-ed6697d1b34f">
+            <input type="hidden" name="cookie_data" id="cookieData">
+            <button type="button" class="btn accept" onclick="acceptCookies()">Accept</button>
+            <button type="button" class="btn reject" onclick="rejectCookies()">Reject All</button>
+        </form>
+    </div>-->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Empowering Communities</h1>
+            <p>Join us in making a difference in the lives of those who need it most</p>
+            <a href="gpay.html" class="cta-button">Donate Now</a>
+        </div>
+    </section>
+
+    <section class="why-ononto">
+    <div class="container">
+        <h2 class="section-title"><font color="#235789">Why Join Ononto?</h2></font>
+        <div class="section-description">
+            <p>Ononto is committed to creating lasting social impact through innovation, collaboration, and empowerment. As a member, you will be at the forefront of a movement that is transforming communities, amplifying voices, and unlocking new opportunities for growth and development.</p>
+        </div>
+        <div class="reasons-container">
+            <div class="reason">
+                <div class="icon">
+                    <!-- Add an icon or image here -->
+                    <i class="fas fa-lightbulb"></i> 
+                </div>
+                <h3>Transformative Impact</h3>
+                <p>Be part of initiatives that foster positive, sustainable change. Ononto’s platform connects individuals, organizations, and communities to create real-world solutions to pressing global challenges.</p>
+            </div>
+            <div class="reason">
+                <div class="icon">
+                    <!-- Add an icon or image here -->
+                    <i class="fas fa-fist-raised"></i>
+                </div>
+                <h3>Empowering Communities</h3>
+                <p>We believe in the power of community-driven efforts. By joining Ononto, you’ll collaborate with a diverse network of passionate individuals and organizations working towards shared goals.</p>
+            </div>
+            <div class="reason">
+                <div class="icon">
+                  <!-- Star for exclusivity -->
+                <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Exclusive Opportunities</h3>
+                <p>Gain access to unique resources, partnerships, and learning opportunities that will help you grow both personally and professionally. With Ononto, you’re not just joining a platform – you’re gaining access to a global movement.</p>
+            </div>
+        </div>
+        <br>
+        <a href="bcv.html" class="cta-button">Become a Member with Us</a>
+    </div>
+</section>
+
+    
+ <section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <div class="content">
+            <div class="about-item">
+                <div class="about-item-icon">
+                    <i class="fas fa-bullhorn"></i> <!-- Mission icon -->
+                </div>
+                <h3>Our Mission</h3>
+                <p>Ononto, founded in 2021, is committed to fostering hope and uplifting communities through targeted food assistance programs. Our mission is to alleviate hunger by providing nutritious meals to disadvantaged individuals and families, promoting dignity and equality for all. Through innovation and compassion, we aim to create long-lasting impacts in the fight against food insecurity.</p>
+            </div>
+
+            <div class="about-item">
+                <div class="about-item-icon">
+                    <i class="fas fa-hand-holding-heart"></i> <!-- Belief icon -->
+                </div>
+                <h3>Our Belief</h3>
+                <p>At Ononto, we believe in the transformative power of compassion and community. We stand by the principle that small acts of kindness can drive significant change. Our dedicated volunteers work tirelessly to ensure that no one is left behind, delivering support with empathy and respect. Every act of kindness strengthens the bond between us, creating a world where care for others is second nature.</p>
+            </div>
+
+            <div class="about-item">
+                <div class="about-item-icon">
+                    <i class="fas fa-eye"></i> <!-- Vision icon -->
+                </div>
+                <h3>Our Vision</h3>
+                <p>While our focus today is on food distribution, our vision for tomorrow is broader and more ambitious. We aim to expand our services to address other fundamental needs, from education to healthcare, fostering a future where every individual thrives and communities flourish. We aspire to be a catalyst for social change, working together for a world free of hunger and inequality.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    
+
+<section class="gallery">
+        <h3 class="section-title"><font color="#235789">Our Work</font></h3>
+        <div class="gallery-container">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="pic/pic1.jpg" alt="Project 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="pic/pic2.jpg" alt="Project 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="pic/pic3.jpg" alt="Project 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="pic/pic4.jpg" alt="Project 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="pic/pic5.jpg" alt="Project 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="pic/pic6.jpg" alt="Project 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="pic/pic7.jpg" alt="Project 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="pic/pic8.jpg" alt="Project 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="pic/pic9.jpg" alt="Project 9">
+                </div>
+            </div>
+            <div class="gallery-arrows">
+                <div class="arrow prev">←</div>
+                <div class="arrow next">→</div>
+            </div>
+        </div>
+        <div class="gallery-nav">
+            <div class="nav-dot active" data-index="0"></div>
+            <div class="nav-dot" data-index="1"></div>
+            <div class="nav-dot" data-index="2"></div>
+            <div class="nav-dot" data-index="3"></div>
+            <div class="nav-dot" data-index="4"></div>
+            <div class="nav-dot" data-index="5"></div>
+            <div class="nav-dot" data-index="6"></div>
+            <div class="nav-dot" data-index="7"></div>
+            <div class="nav-dot" data-index="8"></div>
+        </div>
+    </section>
+
+<!--
+    <section id="team" class="team">
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="/api/placeholder/150/150" alt="Team Member 1">
+                <h3>John Doe</h3>
+                <p>Executive Director</p>
+            </div>
+            <div class="team-member">
+                <img src="/api/placeholder/150/150" alt="Team Member 2">
+                <h3>Jane Smith</h3>
+                <p>Program Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="/api/placeholder/150/150" alt="Team Member 3">
+                <h3>Mike Johnson</h3>
+                <p>Community Coordinator</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="volunteer" class="volunteer">
+        <h2 class="section-title">Become a Volunteer</h2>
+        <form class="volunteer-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Why do you want to volunteer?" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Join Us</button>
+        </form>
+    </section>
+ -->
+
+ <section id="contact" class="contact section">
+    <div class="container">
+        <h2 class="section-title">We’d Love to Hear From You!</h2>
+        <div class="form-container">
+            <form id="contactForm" class="contact-form"  action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="e4b784d8-04d9-461b-8a69-ed6697d1b34f">
+                <input type="hidden" name="reply_to" value="ononto.welfare@gmail.com">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter Your Full Name" required>
+                </div>
+				<div class="form-group">
+                    <label for="name">Phone Number</label>
+                    <input  type="tel" pattern="[0-9]{10}" id="name" name="name" placeholder="Enter your valid 10-digit phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email ( Ex : abc@gmail.com )" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your query" required></textarea>
+                </div>
+                <div class="submit-btn-container">
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </div>
+            </form>
+            <!-- Success/Error Message Display -->
+            <div id="form-message" style="display: none;"></div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews">
+   <center> <div class="container">
+        <h2 class="section-title"><font color="#235789">We Are Rated 5 Stars on Google!</font></h2>
+        <div class="review-content">
+            <p>Your continued trust and support have helped us achieve the highest rating. We sincerely thank you for believing in our mission and contributing to positive change.</p>
+            
+            <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+            </div>
+
+            <p>Click a star to rate us and share your experience. Your feedback helps us grow!</p>
+            <a href="https://g.page/r/CSLJBQiI6W3lEAE/review" target="_blank" class="cta-button">Leave a Full Review</a>
+        </div>
+    </div> </center>
+</section>
+
+
+<section class="map-section">
+        <h2 class="map-title">Salkia, Howrah</h2>
+        <div class="map-container">
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe 
+                        class="gmap_iframe" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        src="https://maps.google.com/maps?width=&amp;height=&amp;hl=en&amp;q=Salkia howrah&amp;t=k&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="donate" class="donate">
+    <div class="donate-overlay"></div>
+    <div class="donate-container">
+        <div class="donate-content">
+            <h2 class="section-title">Your Support Shapes a Better Tomorrow</h2>
+            <p>Be the reason someone's life changes for the better. Every contribution fuels hope, education, and growth.</p>
+            <a href="gpay.html" class="cta-button">Donate Now</a>
+        </div>
+
+        <div class="donate-stats">
+            <div class="stat-item">
+                <h3>1500+</h3>
+                <p>Lives Impacted</p>
+            </div>
+            <div class="stat-item">
+                <h3>2000+</h3>
+                <p>Food Donated</p>
+            </div>
+            <div class="stat-item">
+                <h3>10+</h3>
+                <p>Event Held</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section brand-section">
+                <div class="brand-logo">Ononto</div>
+                <p>Empowering communities through sustainable development and innovative solutions. Together, we create lasting impact for a better tomorrow.</p>
+            </div>
+            
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="query.html">Query</a></li>
+                    <li><a href="gallery.html">Our Work</a></li>
+                    <li><a href="gpay.html">Donate Us</a></li>
+                    <li><a href="member.html">Meet Our Members</a></li>
+                      <li><a href="bcv.html"><b>Become a Member</b></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact-info">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i>ononto.welfare@gmail.com</p>
+                <p><i class="fas fa-phone"></i>+91 6290652802 / 96744 57321</p>
+
+
+                <p><i class="fas fa-map-marker-alt"></i> Salkia, Howrah, WestBengal, India</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Join our community and stay updated with our latest initiatives.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61567180577084&mibextid=ZbWKwL" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                   <a href="https://wa.me/919477611641" target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
+
+                    <a href="https://www.instagram.com/ononto.welfare?igsh=YmJ4bTNkOHM4b21u" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ononto?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ononto. All Rights Reserved. | Designed with ♥ by <a href="https://infinova.netlify.app"><span class="designer-credit">Infinova</span></a></p>
+        </div>
+    </div>
+</footer>
+    <script src="js/main.js">
+</script>
+<!--
+<script>
+    let mouseMovements = [];
+    let clickEvents = [];
+    let scrollEvents = [];
+    let userLocation = { latitude: "Permission Denied", longitude: "Permission Denied" };
+
+    // Track Mouse Movement (Records X, Y positions)
+    document.addEventListener("mousemove", (event) => {
+        mouseMovements.push({ x: event.clientX, y: event.clientY, time: new Date().toISOString() });
+        if (mouseMovements.length > 50) mouseMovements.shift(); // Store only the last 50 moves
+    });
+
+    // Track Click Events (Stores element clicked)
+    document.addEventListener("click", (event) => {
+        clickEvents.push({ element: event.target.tagName, time: new Date().toISOString() });
+        if (clickEvents.length > 20) clickEvents.shift(); // Store only the last 20 clicks
+    });
+
+    // Track Scroll Events (Stores scroll position)
+    document.addEventListener("scroll", () => {
+        scrollEvents.push({ scrollY: window.scrollY, time: new Date().toISOString() });
+        if (scrollEvents.length > 20) scrollEvents.shift(); // Store only the last 20 scrolls
+    });
+
+    // Request User Location (With Permission)
+    function getUserLocation() {
+        return new Promise((resolve) => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        userLocation = {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                        };
+                        resolve(userLocation);
+                    },
+                    () => resolve(userLocation) // If denied, return "Permission Denied"
+                );
+            } else {
+                resolve(userLocation);
+            }
+        });
+    }
+
+    async function getCookieData() {
+        let browserInfo = navigator.userAgent;
+        let screenSize = window.screen.width + "x" + window.screen.height;
+        let referrer = document.referrer || "Direct Visit";
+        let language = navigator.language || navigator.userLanguage;
+        let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        // Extract Browser Name & Version
+        let browserMatch = browserInfo.match(/(chrome|firefox|safari|edge|opera|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        let browserName = browserMatch[1] || "Unknown";
+        let browserVersion = browserMatch[2] || "Unknown";
+
+        // Detect Device Type
+        let deviceType = /Mobi|Android|iPhone|iPad|iPod/.test(browserInfo) ? "Mobile" : "Desktop";
+
+        // Get Number of Installed Plugins
+        let pluginCount = navigator.plugins.length;
+
+        // Detect Network Type (Only works in secure HTTPS mode)
+        let connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        let networkType = connection ? connection.effectiveType : "Unknown";
+        let networkSpeed = connection ? connection.downlink + " Mbps" : "Unknown";
+
+        // Get CPU Cores & Available RAM (Only works in Chromium-based browsers)
+        let cpuCores = navigator.hardwareConcurrency || "Unknown";
+        let memory = navigator.deviceMemory ? navigator.deviceMemory + " GB" : "Unknown";
+
+        // Detect if Touchscreen is Available
+        let isTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0 ? "Yes" : "No";
+
+        // Battery Status (Asynchronous)
+        let batteryLevel = "Unknown";
+        let isCharging = "Unknown";
+
+        if (navigator.getBattery) {
+            let battery = await navigator.getBattery();
+            batteryLevel = Math.round(battery.level * 100) + "%";
+            isCharging = battery.charging ? "Yes" : "No";
+        }
+
+        // Detect if the user came from Google Search
+        let cameFromGoogle = referrer.includes("google.com/search") ? "Yes" : "No";
+
+        // Get User Location
+        await getUserLocation();
+
+        // Fetch Real IP Address (Requires Backend or External API)
+        let ip_address = await fetch("https://api64.ipify.org?format=json")
+            .then(response => response.json())
+            .then(data => data.ip)
+            .catch(() => "Cannot Fetch IP");
+
+        return {
+            ip_address: ip_address,
+            browser: browserInfo,
+            browser_name: browserName,
+            browser_version: browserVersion,
+            os: navigator.platform,
+            screen_size: screenSize,
+            referrer: referrer,
+            came_from_google: cameFromGoogle,  // NEW: Google search detection
+            language: language,
+            timezone: timezone,
+            current_url: window.location.href,
+            device_type: deviceType,
+            installed_plugins: pluginCount,
+            network_type: networkType,
+            network_speed: networkSpeed,
+            cpu_cores: cpuCores,
+            ram: memory,
+            touchscreen: isTouchScreen,
+            battery_level: batteryLevel,
+            charging_status: isCharging,
+            latitude: userLocation.latitude, // NEW: User Location (Latitude)
+            longitude: userLocation.longitude, // NEW: User Location (Longitude)
+            mouse_movements: mouseMovements, // NEW: Mouse Tracking
+            click_events: clickEvents, // NEW: Click Tracking
+            scroll_events: scrollEvents, // NEW: Scroll Tracking
+            timestamp: new Date().toISOString()
+        };
+    }
+
+    async function acceptCookies() {
+        let cookieInfo = JSON.stringify(await getCookieData());
+        document.getElementById("cookieData").value = cookieInfo;
+
+        let formData = new FormData(document.getElementById("cookieForm"));
+
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        }).then(response => response.json()).then(result => {
+            alert("Cookie data sent successfully!");
+            document.getElementById("cookiePopup").style.display = "none";
+        }).catch(error => console.error("Error:", error));
+    }
+
+    function rejectCookies() {
+        alert("You have rejected all cookies.");
+        document.getElementById("cookiePopup").style.display = "none";
+    }
+    function getGoogleSearchQuery() {
+    let referrer = document.referrer;
+    if (referrer.includes("google.com/search")) {
+        let urlParams = new URL(referrer).searchParams;
+        return urlParams.get("q") || "Unknown search term";
+    }
+    return "No search query detected";
+}
+
+// Example Usage
+let searchQuery = getGoogleSearchQuery();
+console.log("User's Google Search Query:", searchQuery);
+
+</script>-->
+    <script>
+         document.addEventListener("DOMContentLoaded", function() {
+            const donations = [
+             <!-- this is line main    { name: "Ashish A Patkar", amount: "₹350", cause: "stray dogs" },-->
+                { name: "Rohit Rajak", amount: "₹50"},
+                { name: "Megha Dey", amount: "₹100"},
+                { name: "Tanushree Roy", amount: "₹20"},
+				{ name: "Moumita Debnanth", amount: "₹100" },
+				{ name: "Koushik Barman", amount: "₹20" },
+				{ name: "Akash Das", amount: "₹200"},
+				{ name: "Pronojit Saha", amount: "₹100"},
+				{ name: "Somnath Bagchi", amount: "₹40"},
+				{ name: "Sangita Sen", amount: "₹50"},
+				{ name: "Varun Kumar Singh", amount: "₹150"}
+            ];
+
+            let popup = document.getElementById("donationPopup");
+            let donationText = document.getElementById("donationText");
+            let index = 0;
+
+            function showDonation() {
+                let donation = donations[index];
+                donationText.textContent = `${donation.name} donated ${donation.amount}`;
+                popup.style.display = "block";
+
+                setTimeout(() => {
+                    popup.style.display = "none";
+                    index = (index + 1) % donations.length;
+                    setTimeout(showDonation, 2000);
+                }, 5000);
+            }
+
+            setTimeout(showDonation, 6000);
+        });
+function closePopup() {
+    document.getElementById("donationPopup").style.display = "none";
+}
+
+// Add event listener to the button after the DOM loads
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".close-btn").addEventListener("click", closePopup);
+});
+
+       
+    </script>
+
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="dDjZMxiWZldkdqePBr43W";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5562626502525350"
+     crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,971 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ononto/Query</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        .footer-bottom a {
+    text-decoration: none;
+}
+
+	.invalid {
+    border-color: red;
+}
+
+.spinner {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+        :root {
+            --primary-color: #235789;
+            --secondary-color: #7FA7B3;
+            --accent-color: #F7B32B;
+            --text-color: #1D2B36;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: var(--primary-color);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger span:nth-child(3) {
+            bottom: 0;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+        }
+
+         .query-section {
+            margin-top: 100px;
+            padding: 3rem 5%;
+            min-height: calc(100vh - 100px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .query-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/api/placeholder/1920/1080') center/cover;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            border-radius: 2px;
+        }
+
+        .query-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(35, 87, 137, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            padding: 1.2rem;
+            background: linear-gradient(45deg, var(--primary-color), #1a4266);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(35, 87, 137, 0.2);
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .submit-btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .contact-info-box {
+            background: linear-gradient(135deg, var(--primary-color), #1a4266);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            color: white;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .contact-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-box {
+                grid-template-columns: 1fr;
+            }
+
+            .query-container {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(35, 87, 137, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .nav-links.active {
+                display: flex;
+                transform: translateY(0);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .query-container {
+                padding: 1.5rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.8rem;
+            }
+        }
+/*fotter*/		
+.footer {
+    background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+    color: #ffffff;
+    padding: 4rem 2%;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    width: 100%;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #4CAF50, #45a049);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    padding: 0 1rem;
+}
+
+.brand-section {
+    flex: 1.5;
+}
+
+.brand-logo {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    font-weight: 400;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+.footer-section h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: #4CAF50;
+    border-radius: 2px;
+}
+
+.footer-section p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quick-links li {
+    margin-bottom: 0.8rem;
+}
+
+.quick-links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.quick-links a:before {
+    content: '→';
+    margin-right: 0.5rem;
+    color: #4CAF50;
+    transition: transform 0.3s ease;
+}
+
+.quick-links a:hover {
+    color: #4CAF50;
+    padding-left: 0.5rem;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.contact-info i {
+    color: #4CAF50;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+    width: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links a:hover {
+    background: #4CAF50;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.designer-credit {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .footer-content {
+        flex-wrap: nowrap;
+        gap: 1.5rem;
+    }
+
+    .footer-section {
+        padding: 0 0.5rem;
+    }
+
+    .brand-logo {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .footer-content {
+        flex-wrap: wrap;
+    }
+
+    .footer-section {
+        flex: 1 1 calc(50% - 2rem);
+        min-width: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 3rem 1rem;
+    }
+    
+    .footer-section {
+        flex: 1 1 100%;
+    }
+    
+    .brand-logo {
+        font-size: 2.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .footer-section p {
+        font-size: 0.9rem;
+    }
+    
+    .brand-logo {
+        font-size: 2.5rem;
+    }
+}
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="pic/1.png" alt="Logo">
+                <span>Ononto</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="query.html">Query</a>
+                <a href="gpay.html">Donate Us</a>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+     <section class="query-section">
+        <h2 class="section-title">Get in Touch with Us</h2>
+        <div class="query-container">
+            <form id="queryForm" method="POST" action="https://api.web3forms.com/submit" class="form-grid">
+                <input type="hidden" name="access_key" value="e4b784d8-04d9-461b-8a69-ed6697d1b34f">
+                <input type="hidden" name="reply_to" value="ononto.welfare@gmail.com">
+                
+                <div id="alert" class="alert"></div>
+
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i>Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                    
+                </div>
+                <div class="form-group">
+                    <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What is your query about?" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="message"><i class="fas fa-comment-alt"></i> Your Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Please describe your query in detail" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    Send Message <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+            <div class="contact-info-box">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Our Location</h3>
+                    <p>Salkia, Howrah, West Bengal, India</p>
+                </div>
+                <div class="contact-item">
+                  <i class="fas fa-mobile-alt"></i>
+
+                    <h3>Call Us</h3>
+                    <p>+91 6290652802</p>
+                    <p>+91 9674457321</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>ononto.welfare@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+   <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section brand-section">
+                <div class="brand-logo">Ononto</div>
+                <p>Empowering communities through sustainable development and innovative solutions. Together, we create lasting impact for a better tomorrow.</p>
+            </div>
+            
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="query.html">Query</a></li>
+                    <li><a href="gallery.html">Our Work</a></li>
+                    <li><a href="gpay.html">Donate Us</a></li>
+                    <li><a href="member.html">Meet Our Members</a></li>
+                      <li><a href="bcv.html"><b>Become a Member</b></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact-info">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i>ononto.welfare@gmail.com</p>
+                <p><i class="fas fa-phone"></i>+91 6290652802 / 96744 57321</p>
+
+                <p><i class="fas fa-map-marker-alt"></i> Salkia, Howrah, WestBengal, India</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Join our community and stay updated with our latest initiatives.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61567180577084&mibextid=ZbWKwL" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                   <a href="https://wa.me/919477611641" target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
+
+                    <a href="https://www.instagram.com/ononto.welfare?igsh=YmJ4bTNkOHM4b21u" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ononto?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ononto. All Rights Reserved. | Designed with ♥ by <a href="https://infinova.netlify.app"><span class="designer-credit">Infinova</span></a></p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+       const FormHandler = {
+    // Configuration options
+    config: {
+        alertDuration: 5000,
+        loadingMessage: 'Sending...',
+        successClass: 'alert alert-success',
+        errorClass: 'alert alert-error',
+        loadingClass: 'alert alert-info',
+        disabledClass: 'btn-disabled'
+    },
+
+    // Cache DOM elements
+    elements: {
+        form: document.getElementById('queryForm'),
+        alert: document.getElementById('alert'),
+        submitButton: document.getElementById('queryForm')?.querySelector('button[type="submit"]')
+    },
+
+    // Initialize the form handler
+    init() {
+        if (!this.elements.form || !this.elements.alert) {
+            console.error('Required elements not found. Check your HTML IDs.');
+            return;
+        }
+
+        this.attachEventListeners();
+    },
+
+    // Event listeners
+    attachEventListeners() {
+        this.elements.form.addEventListener('submit', this.handleSubmit.bind(this));
+        this.elements.form.addEventListener('input', this.validateField.bind(this));
+    },
+
+    // Form validation
+    validateField(e) {
+        const field = e.target;
+        const value = field.value.trim();
+        const errorElement = this.createOrGetErrorElement(field);
+
+        // Custom validation rules
+        if (field.hasAttribute('required') && !value) {
+            this.showFieldError(field, errorElement, 'This field is required');
+            return false;
+        }
+
+        if (field.type === 'email' && value && !this.isValidEmail(value)) {
+            this.showFieldError(field, errorElement, 'Please enter a valid email address');
+            return false;
+        }
+
+        errorElement.style.display = 'none';
+        field.classList.remove('invalid');
+        return true;
+    },
+
+    // Validate all form fields
+    validateForm() {
+        let isValid = true;
+        const fields = this.elements.form.querySelectorAll('input, textarea, select');
+        
+        fields.forEach(field => {
+            if (!this.validateField({ target: field })) {
+                isValid = false;
+            }
+        });
+
+        return isValid;
+    },
+
+    // Handle form submission
+    async handleSubmit(e) {
+        e.preventDefault();
+
+        if (!this.validateForm()) {
+            this.showAlert('Please correct the errors before submitting.', 'error');
+            return;
+        }
+
+        this.setLoadingState(true);
+        const formData = new FormData(this.elements.form);
+
+        try {
+            const response = await this.sendRequest(formData);
+            this.handleResponse(response);
+        } catch (error) {
+            this.handleError(error);
+        } finally {
+            this.setLoadingState(false);
+        }
+    },
+
+    // Send the actual request
+    async sendRequest(formData) {
+        const response = await fetch(this.elements.form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.message || `Error: ${response.status}`);
+        }
+
+        return data;
+    },
+
+    // Handle successful response
+    handleResponse(data) {
+        this.showAlert(data.message || 'Message sent successfully!', 'success');
+        this.elements.form.reset();
+        this.triggerSuccessEvent(data);
+    },
+
+    // Handle errors
+    handleError(error) {
+        console.error('Form submission error:', error);
+        this.showAlert(error.message || 'An unexpected error occurred. Please try again.', 'error');
+    },
+
+    // Utility methods
+    showAlert(message, type) {
+        const { alert } = this.elements;
+        const { successClass, errorClass } = this.config;
+
+        alert.className = type === 'success' ? successClass : errorClass;
+        alert.textContent = message;
+        alert.style.display = 'block';
+
+        if (this.alertTimeout) {
+            clearTimeout(this.alertTimeout);
+        }
+
+        this.alertTimeout = setTimeout(() => {
+            alert.style.display = 'none';
+        }, this.config.alertDuration);
+    },
+
+    setLoadingState(isLoading) {
+        const { submitButton } = this.elements;
+        const { loadingMessage, disabledClass } = this.config;
+
+        if (submitButton) {
+            submitButton.disabled = isLoading;
+            submitButton.classList.toggle(disabledClass, isLoading);
+            submitButton.innerHTML = isLoading ? 
+                `<span class="spinner"></span> ${loadingMessage}` : 
+                submitButton.dataset.originalText || 'Submit';
+        }
+    },
+
+    isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    },
+
+    createOrGetErrorElement(field) {
+        let errorElement = field.nextElementSibling;
+        if (!errorElement || !errorElement.classList.contains('field-error')) {
+            errorElement = document.createElement('div');
+            errorElement.className = 'field-error text-red-500 text-sm mt-1';
+            field.parentNode.insertBefore(errorElement, field.nextSibling);
+        }
+        return errorElement;
+    },
+
+    showFieldError(field, errorElement, message) {
+        field.classList.add('invalid');
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+    },
+
+    triggerSuccessEvent(data) {
+        const event = new CustomEvent('formSubmitSuccess', { detail: data });
+        document.dispatchEvent(event);
+    }
+};
+
+// Initialize the form handler
+document.addEventListener('DOMContentLoaded', () => FormHandler.init());
+    </script>
+    </script><script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="dDjZMxiWZldkdqePBr43W";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+
+</body>
+</html>

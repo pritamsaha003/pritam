@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ononto/Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link rel="stylesheet" href="css/gallery.css">
+    <style>
+        .footer-bottom a {
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="pic/1.png" alt="Logo">
+                <span>Ononto</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="query.html">Query</a>
+                <a href="gpay.html">Donate Us</a>
+            </nav>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="gallery-container">
+        <div class="gallery-header">
+            <h1>Our Food Distribution Journey</h1>
+            <p>Witness our commitment to serving the community through these captured moments of hope and sustenance.</p>
+        </div>
+
+        <section class="gallery-section">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Photos</button>
+                <button class="filter-btn" data-filter="distribution">Distribution</button>
+                <button class="filter-btn" data-filter="preparation">Preparation</button>
+                <button class="filter-btn" data-filter="community">We’re Here</button>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Example gallery items with actual paths - replace with your image paths -->
+                <div class="gallery-item" data-category="community">
+                    <img src="pic/work1.jpg" alt="Food Distribution Event">
+                    <div class="gallery-item-info">
+                        <h3>In Sivasram Orphanage</h3>
+                        <p>Providing meals to those in Sivasram Orphanage, Uttarpara</p>
+                  <!--      <span class="gallery-item-date">March 15, 2024</span> -->
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="community">
+                    <img src="pic/work5.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Home of Hope</h3>
+                        <p>Bringing smiles and fresh meals to children, prepared with love by our members</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="preparation">
+                    <img src="pic/work12.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Preparation</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="preparation">
+                    <img src="pic/work14.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Preparation</h3>
+                        <p>Sharing meals with those in need, one plate at a time.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="preparation">
+                    <img src="pic/work19.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Preparation</h3>
+                        <p>Our team works tirelessly to bring meals to those who need them most</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work23.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Shared Meals, Shared Smiles</h3>
+                        <p>Children enjoying meals together in a safe and caring space.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work9.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3> Feeding with Care</h3>
+                        <p>Delivering food —our members ensure no one goes hungry.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work7.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Hands That Serve</h3>
+                        <p> Serve meals with care, dedication, and a whole lot of heart.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work11.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Dignity Through Food</h3>
+                        <p>Serving with kindness, one meal at a time.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work15.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Happiness Served Daily</h3>
+                        <p>Mealtimes filled with friendship, laughter, and full bellies.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work24.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Small Hands, Big Joy</h3>
+                        <p>A moment of peace and joy during shared meals.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work18.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Every Child Deserves a Meal</h3>
+                        <p>Ensuring no child goes hungry, one plate at a time.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work27.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Bright Futures Begin with Full Stomachs</h3>
+                        <p> Fueling dreams with each meal we serve.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work26.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3> Little Smiles, Big Appetites</h3>
+                        <p> Mealtime becomes magic when shared with friends and care.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="community">
+                    <img src="pic/work29.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3> From Our Hearts to Theirs</h3>
+                        <p>Members putting love into every bite for the children they serve.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work25.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>A Step Toward Wellness</h3>
+                        <p>Serving meals that fuel dreams, energy, and happiness.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work6.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Wholesome Meals, Happy Kids</h3>
+                        <p>Freshly prepared food served in a joyful and safe environment.
+
+                        </p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work3.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Eating Well, Growing Strong</h3>
+                        <p>Providing the nourishment every child needs to thrive.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work4.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Powered by Good Food</h3>
+                        <p>Delicious and balanced meals for a brighter, healthier tomorrow.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work2.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>From Our Hearts to Theirs</h3>
+                        <p>Volunteers putting love into every bite for the children they serve.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work8.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Heartfelt Hospitality</h3>
+                        <p>A simple gesture, a big impact—nourishment with dignity.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work10.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Full Plates, Full Hearts</h3>
+                        <p>Delicious meals shared in a space filled with warmth and laughter.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work13.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Meals with Meaning</h3>
+                        <p>More than just food—this is love made visible.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work17.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Love on Every Plate</h3>
+                        <p> Where every meal tells a story of compassion and community.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work20.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Feeding with Kindness</h3>
+                        <p>Serving food, spreading smiles, and showing care through action.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work22.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Together We Dine</h3>
+                        <p>Creating cherished moments around simple, nourishing meals.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="distribution">
+                    <img src="pic/work28.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Meals that Matter</h3>
+                        <p>Feeding the future with every bite, one child at a time.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="preparation">
+                    <img src="pic/work21.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Eating Well, Growing Strong</h3>
+                        <p>Providing the nourishment every child needs to thrive.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="community">
+                    <img src="pic/work30.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Happiness Served Daily</h3>
+                        <p>Mealtimes filled with friendship, laughter, and full bellies.</p>
+                   
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="preparation">
+                    <img src="pic/pic1.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Kitchen Preparation</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="preparation">
+                    <img src="pic/pic2.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Kitchen Preparation</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="preparation">
+                    <img src="pic/pic3.jpg" alt="Community Gathering">
+                    <div class="gallery-item-info">
+                        <h3>Kitchen Preparation</h3>
+                        <p>Bringing people together through food and compassion.</p>
+         
+                    </div>
+                </div>
+				 <div class="gallery-item" data-category="preparation">
+                    <img src="pic/pic4.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Kitchen Preparation</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div>
+				 <div class="gallery-item" data-category="preparation">
+                    <img src="pic/pic5.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Kitchen Preparation</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div>
+				 <div class="gallery-item" data-category="preparation">
+                    <img src="pic/pic6.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Kitchen Preparation</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div>
+				 <div class="gallery-item" data-category="distribution">
+                    <img src="pic/pic7.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Street Food Distribution</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div>
+				 <div class="gallery-item" data-category="distribution">
+                    <img src="pic/pic8.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Street Food Distribution</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div>
+								 <div class="gallery-item" data-category="distribution">
+                    <img src="pic/pic9.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Street Food Distribution</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div>
+			<!--	this is for when community arrived
+			<div class="gallery-item" data-category="community">
+                    <img src="pic/pic6.jpg" alt="Food Preparation">
+                    <div class="gallery-item-info">
+                        <h3>Community Meal</h3>
+                        <p>Our volunteers preparing fresh meals with love and care.</p>
+                   
+                    </div>
+                </div> -->
+
+                <!-- Add more gallery items as needed -->
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section brand-section">
+                <div class="brand-logo">Ononto</div>
+                <p>Empowering communities through sustainable development and innovative solutions. Together, we create lasting impact for a better tomorrow.</p>
+            </div>
+            
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="query.html">Query</a></li>
+                    <li><a href="gallery.html">Our Work</a></li>
+                    <li><a href="gpay.html">Donate Us</a></li>
+                    <li><a href="member.html">Meet Our Members</a></li>
+                      <li><a href="bcv.html"><b>Become a Member</b></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact-info">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i>ononto.welfare@gmail.com</p>
+                <p><i class="fas fa-phone"></i>+91 6290652802 / 96744 57321</p>
+
+                <p><i class="fas fa-map-marker-alt"></i> Salkia, Howrah, WestBengal, India</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Join our community and stay updated with our latest initiatives.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61567180577084&mibextid=ZbWKwL" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                   <a href="https://wa.me/919477611641" target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
+
+                    <a href="https://www.instagram.com/ononto.welfare?igsh=YmJ4bTNkOHM4b21u" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ononto?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ononto. All Rights Reserved. | Designed with ♥ by <a href="https://infinova.netlify.app"><span class="designer-credit">Infinova</span></a></p>
+        </div>
+    </div>
+</footer>
+
+ <script src="js/gallery.js"></script>
+ <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="dDjZMxiWZldkdqePBr43W";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+
+</body>
+</html>

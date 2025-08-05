@@ -1,0 +1,574 @@
+        :root {
+            --primary-color: #235789;
+            --secondary-color: #7FA7B3;
+            --accent-color: #F7B32B;
+            --text-color: #1D2B36;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--primary-color);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Enhanced Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger span:nth-child(3) {
+            bottom: 0;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../pic/vt.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        /* Volunteer Form Section */
+        .volunteer-form {
+            padding: 5rem 10%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(35, 87, 137, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .nav-links.active {
+                display: flex;
+                transform: translateY(0);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
+        }
+        
+        
+        
+        /* Style for the message container */
+.message {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Success message styling */
+.message.success {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #45a049;
+}
+
+/* Error message styling */
+.message.error {
+    background-color: #f44336;
+    color: white;
+    border: 1px solid #f33d29;
+}
+
+/* Style for the submit button when in loading state */
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Loading state text */
+button[type="submit"]:disabled {
+    background-color: #0288d1;
+    color: white;
+    cursor: not-allowed;
+    font-weight: bold;
+}
+
+/* Form container styling */
+form {
+    position: relative;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Message container fade-out effect */
+.message.fade-out {
+    opacity: 0;
+}
+
+/* Additional padding and margin adjustments for visual appeal */
+form input, form select, form textarea, form button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form input:focus, form select:focus, form textarea:focus, form button:focus {
+    border-color: #0288d1;
+    outline: none;
+}
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+.footer {
+    background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+    color: #ffffff;
+    padding: 4rem 2%;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    width: 100%;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #4CAF50, #45a049);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    padding: 0 1rem;
+}
+
+.brand-section {
+    flex: 1.5;
+}
+
+.brand-logo {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    font-weight: 400;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+.footer-section h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: #4CAF50;
+    border-radius: 2px;
+}
+
+.footer-section p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quick-links li {
+    margin-bottom: 0.8rem;
+}
+
+.quick-links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.quick-links a:before {
+    content: '→';
+    margin-right: 0.5rem;
+    color: #4CAF50;
+    transition: transform 0.3s ease;
+}
+
+.quick-links a:hover {
+    color: #4CAF50;
+    padding-left: 0.5rem;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.contact-info i {
+    color: #4CAF50;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+    width: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links a:hover {
+    background: #4CAF50;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.designer-credit {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .footer-content {
+        flex-wrap: nowrap;
+        gap: 1.5rem;
+    }
+
+    .footer-section {
+        padding: 0 0.5rem;
+    }
+
+    .brand-logo {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .footer-content {
+        flex-wrap: wrap;
+    }
+
+    .footer-section {
+        flex: 1 1 calc(50% - 2rem);
+        min-width: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 3rem 1rem;
+    }
+    
+    .footer-section {
+        flex: 1 1 100%;
+    }
+    
+    .brand-logo {
+        font-size: 2.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .footer-section p {
+        font-size: 0.9rem;
+    }
+    
+    .brand-logo {
+        font-size: 2.5rem;
+    }
+}
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
