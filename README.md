@@ -1,61 +1,55 @@
-<h1 align="center">🚀 Pritam — Next-Gen Web Platform</h1>
+<h1 align="center">🚀Ngo Website</h1>
 
 <p align="center">
-  <strong>A responsive, intelligent, and performance-first web experience</strong><br>
-  <em>Crafted with precision. Designed for real-world scale.</em>
+  <strong>A modern, responsive, and performance-optimized web solution</strong><br>
+  <em>Built with passion · Designed for users · Scalable for the future</em>
 </p>
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/TechStack-HTML%2FCSS%2FJS%2FPHP-blueviolet?style=for-the-badge" alt="Tech Stack"></a>
-  <a href="#"><img src="https://img.shields.io/badge/UI%2FUX-Centered%20on%20Users-brightgreen?style=for-the-badge" alt="UX Badge"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Design-Dark%20Theme-9B59B6?style=for-the-badge" alt="Dark Theme"></a>
+  <a href="#"><img src="https://img.shields.io/badge/TechStack-HTML%2FCSS%2FJS%2FPHP-blueviolet?style=for-the-badge"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Responsive-Design-success?style=for-the-badge"></a>
+  <a href="#"><img src="https://img.shields.io/badge/UX-Focused-orange?style=for-the-badge"></a>
 </p>
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-- 🗺️ **Location-Aware Design** — Displays dynamic content based on user’s location
-- 🌑 **Dark Theme Interface** — Sleek and elegant visuals for modern users
-- ⚡ **Optimized Performance** — Minimal load times and fast response
-- 📱 **Mobile-First Layout** — Fully responsive across all devices
-- 🧩 **Modular Architecture** — Clean, maintainable codebase for scalability
+- 🔥 Clean & elegant dark UI
+- 📱 Fully responsive for all devices
+- 🧭 Location-aware design (optional)
+- ⚡ Fast load time & performance
+- 🧩 Modular & easy-to-extend structure
 
 ---
 
 ## 🧠 Tech Stack
 
-| Frontend            | Backend      | Database     |
-|---------------------|--------------|--------------|
-| HTML5 / CSS3        | PHP          | MySQL        |
-| JavaScript (ES6+)   | REST Ready   | JSON Friendly|
+| Frontend        | Backend     | Database   |
+|-----------------|-------------|------------|
+| HTML5 / CSS3    | PHP         | MySQL      |
+| JavaScript (ES6)| REST Ready  | JSON APIs  |
 
 ---
 
-## 🖼 Preview
+## 📸 Preview
 
-> _"Designed with intention. Built with purpose."_
+> _"Design is not just what it looks like — it's how it works."_  
+*(Add your screenshot below)*
 
-⚠️ *Live screenshots and demo link will be available soon.*  
-*(Or replace this text with an actual preview once deployed.)*
+<!-- Replace the image URL with your own -->
+<!-- ![Preview](https://your-image-url.com) -->
 
 ---
 
-## 🤝 Contribution
+## 🤝 Contributing
 
-Contributions are welcome! If you’ve got ideas to make this better — fork it, build it, and open a PR.
+Pull requests and feature suggestions are welcome!  
+Fork the repo, improve it, and open a PR.
 
 ---
 
 ## 📄 License
 
-This project is released under the **MIT License**.  
-Feel free to use, modify, and distribute with proper credit.
-
----
-
-<p align="center">
-  Built with care by <strong>Pritam Saha</strong><br>
-  <em>“Design is how it works — not just how it looks.”</em>
-</p>
-
+This project is licensed under the [MIT License](./LICENSE.md)  
+© 2025 [Pritam Saha](https://github.com/yourusername)
