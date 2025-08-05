@@ -27,8 +27,8 @@
 
 | Frontend        | Backend     | Database   |
 |-----------------|-------------|------------|
-| HTML5 / CSS3    | PHP         | MySQL      |
-| JavaScript (ES6)| REST Ready  | JSON APIs  |
+| HTML5 / CSS3    |
+| JavaScript (ES6)| REST Ready  |
 
 ---
 
